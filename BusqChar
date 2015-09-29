@@ -1,0 +1,48 @@
+  HashMap<Character,Integer> letras = new HashMap<Character,Integer>();
+        
+  List<String> nombres = new ArrayList<String>();
+  nombres.add("al");
+  nombres.add("b");
+  nombres.add("c");
+  nombres.add("dL");
+  nombres.add("e");
+  nombres.add("f");
+  nombres.add("ggg");
+  nombres.add("h");
+  nombres.add("i");
+  nombres.add("jL");
+  nombres.add("ka");
+  nombres.add("l");
+
+  for(int i=0;i<nombres.size();i++)
+  {
+      String nombre = nombres.get(i).toUpperCase();
+      for(int j=0;j<nombre.length();j++)
+      {
+          char letra = nombre.charAt(j);
+          if(letras.get(letra)==null)
+          {
+              letras.put(letra, 1);
+          }
+          else
+          {
+              int cont = letras.get(letra);
+              letras.put(letra, ++cont);
+          }
+      }
+  }
+  
+  int intMayor = 0;
+  char chrMayor = 'Z';
+  Iterator iterador = letras.entrySet().iterator();
+  while(iterador.hasNext())
+  {
+      Map.Entry par = (Map.Entry)iterador.next();
+      if((int)par.getValue()>intMayor)
+      {
+          intMayor = (int)par.getValue();
+          chrMayor = (char)par.getKey();
+      }
+  }
+  
+  System.out.println(chrMayor + "->" + intMayor);
